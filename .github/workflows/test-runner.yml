@@ -1,4 +1,4 @@
-name: Windows Runner Test
+name: Hybrid Runner Test
 
 on:
   workflow_dispatch:
@@ -7,11 +7,17 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - name: Test Windows Environment
+      - name: Test Git Bash
+        shell: bash
+        run: |
+          echo "Testing Git Bash environment"
+          pwd
+          ls -la
+          git --version
+          
+      - name: Test PowerShell (Fallback)
         shell: pwsh
         run: |
-          Write-Host "Testing Windows environment"
+          Write-Host "Testing PowerShell as fallback"
           Get-Location
           Get-ChildItem
-          Write-Host "Current User: $env:USERNAME"
-          Write-Host "Current Path: $env:PATH"
