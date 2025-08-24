@@ -1,25 +1,17 @@
-name: Test Self-Hosted Runner
+name: Simple Runner Test
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
-  test-runner:
+  simple-test:
     runs-on: self-hosted
     
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Test Environment
+    - name: Basic Test
       run: |
-        echo "Hello from self-hosted runner!"
-        echo "Current directory: $PWD"
-        echo "Runner OS: $RUNNER_OS"
-        echo "Runner Name: $RUNNER_NAME"
-        
-    - name: Test PowerShell
-      run: |
-        Write-Host "Testing PowerShell commands"
-        Get-ComputerInfo | Select-Object WindowsProductName, OsVersion, OsArchitecture
+        echo "Hello from runner"
+        pwd
+        dir
