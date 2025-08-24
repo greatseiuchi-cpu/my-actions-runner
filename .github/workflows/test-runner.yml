@@ -8,8 +8,8 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Echo Test
-        shell: pwsh
+        shell: bash
         run: |
-          Write-Host "Testing runner connection"
-          Write-Host "Current location:"
-          Get-Location
+          echo "Testing runner connection"
+          echo "Current location:"
+          pwd
