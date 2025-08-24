@@ -1,17 +1,15 @@
-name: Simple Runner Test
+name: Minimal Test
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
-  simple-test:
+  test:
     runs-on: self-hosted
-    
     steps:
-    - name: Basic Test
-      run: |
-        echo "Hello from runner"
-        pwd
-        dir
+      - name: Echo Test
+        shell: pwsh
+        run: |
+          Write-Host "Testing runner connection"
+          Write-Host "Current location:"
+          Get-Location
