@@ -1,4 +1,4 @@
-name: Hybrid Runner Test
+name: Minimal Test
 
 on:
   workflow_dispatch:
@@ -7,17 +7,9 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - name: Test Git Bash
+      - name: Echo Test
         shell: bash
         run: |
-          echo "Testing Git Bash environment"
+          echo "Testing runner connection"
+          echo "Current location:"
           pwd
-          ls -la
-          git --version
-          
-      - name: Test PowerShell (Fallback)
-        shell: pwsh
-        run: |
-          Write-Host "Testing PowerShell as fallback"
-          Get-Location
-          Get-ChildItem
