@@ -1,4 +1,4 @@
-name: Minimal Test
+name: Bash Runner Test
 
 on:
   workflow_dispatch:
@@ -6,10 +6,15 @@ on:
 jobs:
   test:
     runs-on: self-hosted
-    steps:
-      - name: Echo Test
+    defaults:
+      run:
         shell: bash
+    
+    steps:
+      - name: Test Bash
         run: |
-          echo "Testing runner connection"
-          echo "Current location:"
+          echo "Testing Bash runner"
           pwd
+          ls -la
+          echo "Current user: $USER"
+          echo "Current path: $PATH"
