@@ -1,4 +1,4 @@
-name: Bash Runner Test
+name: Windows Runner Test
 
 on:
   workflow_dispatch:
@@ -6,15 +6,12 @@ on:
 jobs:
   test:
     runs-on: self-hosted
-    defaults:
-      run:
-        shell: bash
-    
     steps:
-      - name: Test Bash
+      - name: Test Windows Environment
+        shell: pwsh
         run: |
-          echo "Testing Bash runner"
-          pwd
-          ls -la
-          echo "Current user: $USER"
-          echo "Current path: $PATH"
+          Write-Host "Testing Windows environment"
+          Get-Location
+          Get-ChildItem
+          Write-Host "Current User: $env:USERNAME"
+          Write-Host "Current Path: $env:PATH"
